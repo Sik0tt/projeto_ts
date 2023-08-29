@@ -5,7 +5,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "db_cs_ts_orm_api_2023",
-    "synchronize": true,
+    "synchronize": true, 
     "logging": false,
     "entities": [
         "src/app/models/*.ts"
