@@ -1,8 +1,8 @@
-import {Entity, Column, PrimaryColumn} from 'typeorm'; //importa os comandos do typeorm
+import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm'; //importa os comandos do typeorm
 @Entity('tb_endereco') //define a classe endereco como uma tabela e vai ser gerenciada pelo typeorm
 class Endereco {
 
- @PrimaryColumn('int') //coluna id da tabela
+ @PrimaryGeneratedColumn() //coluna id da tabela
  id: number;
 
  @Column("varchar", { length: 8 }) //coluna cep da tabela
