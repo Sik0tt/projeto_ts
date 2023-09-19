@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import Local from '../models/Local';
+import Round from '../models/Round';
 
-class LocalController{
+class RoundController{
 
     async list(req: Request, res: Response){
-        const repository = getRepository(Local);
+        const repository = getRepository(Round);
         const lista = await repository.find(); //find está econtrando tudo que tem dentro do repository Endereco -> await aguarda o retorno do find para depois processar os dados da lista
-        return res.json(lista);
+        return res.json(Round);
     }
 
     async store(req: Request, res: Response){
 
-        const repository = getRepository(Local);//recupera o repositorio de Local
+        const repository = getRepository(Round);//recupera o repositorio de Local
         console.log(req.body);
         const {id} = req.body;
         if(!id){
@@ -34,7 +34,7 @@ class LocalController{
     //codigo fonte referente a parate 11.
     async delete(req: Request, res: Response){
         try{
-            const repository = getRepository(Local);
+            const repository = getRepository(Round);
             const {id} = req.body;
             const end = await repository.findOne({where : {"id" : id }});
             if(end){
@@ -52,6 +52,4 @@ class LocalController{
         }
 }
 
-export default new LocalController;
-
-//await garante que os dados do bd sejam processados antes do processo da lista
+export default new RoundController;

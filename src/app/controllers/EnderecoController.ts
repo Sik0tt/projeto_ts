@@ -15,9 +15,25 @@ class EnderecoController{
 
         const repository = getRepository(Endereco);//recupera o repositorio de Endereço
         console.log(req.body);
-        const end = repository.create(req.body);
-        await repository.save(end);
-        return res.json(end);
+       
+        const {id} = req.body;
+        if(!id){
+            const end = repository.create(req.body); //se não for informado o id ele cria um novo
+            await repository.save(end);
+            return res.json(end);
+        }else{
+            const find = await repository.findOne({where : {"id" : id }}); //teste se o id existe
+        if(find){
+            const end = repository.create(req.body); //se existir o id cadastrado ele altera
+            await repository.remove(end);
+            return res.sendStatus(204);
+        }else{ // se for informar o id e não existir no banco não faz nada
+            return res.sendStatus(404); //não encontrado para alterar
+        } 
+
+        }
+        
+        
     }
 
     //codigo fonte referente a parate 11.
@@ -40,9 +56,6 @@ class EnderecoController{
 
         }
 }
-
-
-
 
 
 export default new EnderecoController;
