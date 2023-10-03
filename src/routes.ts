@@ -21,7 +21,6 @@ router.delete('/local/delete', LocalController.delete)
 //http://localhost:3000/jogador/list
 router.get('/jogador/list', JogadorController.list)
 router.post('/jogador/store', JogadorController.store)
-router.delete('/jogador/delete', JogadorController.delete)
 
 //http://localhost:3000/patente/list
 router.get('/patente/list', PatenteController.list)
@@ -42,6 +41,11 @@ router.delete('/objetivo/delete', ObjetivoController.delete)
 router.get('/round/list', RoundController.list)
 router.post('/round/store', RoundController.store)
 router.delete('/round/delete', RoundController.delete)
+
+//http://localhost:3000/loginjogador
+router.post('/loginjogador', JogadorController.login);
+router.get('/jogador/:nickname', JogadorController.find);
+router.delete('/deletejogador/:nickname', JogadorController.delete)
 
 
 export default router;
